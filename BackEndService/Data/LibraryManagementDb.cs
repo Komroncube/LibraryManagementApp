@@ -10,6 +10,25 @@ namespace BackEndService.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BookStudent>()
+                .HasOne<Student>(st => st.Student)
+                .WithMany(s => s.BookStudents)
+                .HasForeignKey(st => st.StudentId);
+            modelBuilder.Entity<BookStudent>()
+                .HasOne<Book>(st => st.Book)
+                .WithMany(b => BookStudents)
+                .HasForeignKey(bk => bk.BookId);
+
+            modelBuilder.Entity<BoughtBooks>()
+                .HasOne<Student>(st => st.Student)
+                .WithMany(b => BoughtBooks)
+                .HasForeignKey(st => st.StudentId);
+            modelBuilder.Entity<BoughtBooks>()
+                .HasOne<Book>(st => st.Book)
+                .WithMany(b => BoughtBooks)
+                .HasForeignKey(st => st.BookId);
+            
+
             var sd = new SeedData();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Student>().HasData(
