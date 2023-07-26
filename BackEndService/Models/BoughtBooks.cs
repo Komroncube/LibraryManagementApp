@@ -11,9 +11,9 @@ namespace BackEndService.Models
         [Key]
         public Guid Id { get; set; }
         public Guid StudentId { get; set; }
-        public ICollection<Student> students { get; set; }
+        public Student Student { get; set; }
         public Guid BookId { get; set; }
-        public ICollection<Book> books { get; set; }
+        public Book Book { get; set; }
         public int Quantity { get; set; }
         public DateTime BoughtTime { get; set; }
 
