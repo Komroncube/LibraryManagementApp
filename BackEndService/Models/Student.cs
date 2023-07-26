@@ -13,9 +13,9 @@ namespace BackEndService.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public string Faculty { get; set; }
+        public Faculty Faculty { get; set; }
         public ICollection<BookStudent> BookStudents { get; set; }
-
+        public ICollection<BoughtBooks> BoughtBooks { get; set; }
 
     }
 }

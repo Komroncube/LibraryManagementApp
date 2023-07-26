@@ -8,6 +8,8 @@
         public string? Description { get; set; }
         public string Author { get; set; }
         public int Quantity { get; set; }
+        public double Price { get; set; }
         public ICollection<BookStudent> BookStudents { get; set; }
+        public ICollection<BoughtBooks> BoughtBooks { get; set; }
     }
 }
