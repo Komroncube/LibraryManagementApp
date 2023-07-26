@@ -5,10 +5,10 @@ namespace BackEndService.Models
     {
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("Student")]
+        //[ForeignKey("Student")]
         public Guid StudentId { get; set; }
         public Student Student { get; set; }
-        [ForeignKey("Book")]
+        //[ForeignKey("Book")]
         public Guid BookId { get; set; }
         public Book Book { get; set; }
         public DateTime IssueDate { get; set; }

@@ -16,16 +16,16 @@ namespace BackEndService.Data
                 .HasForeignKey(st => st.StudentId);
             modelBuilder.Entity<BookStudent>()
                 .HasOne<Book>(st => st.Book)
-                .WithMany(b => BookStudents)
+                .WithMany(b => b.BookStudents)
                 .HasForeignKey(bk => bk.BookId);
 
             modelBuilder.Entity<BoughtBooks>()
                 .HasOne<Student>(st => st.Student)
-                .WithMany(b => BoughtBooks)
+                .WithMany(b => b.BoughtBooks)
                 .HasForeignKey(st => st.StudentId);
             modelBuilder.Entity<BoughtBooks>()
                 .HasOne<Book>(st => st.Book)
-                .WithMany(b => BoughtBooks)
+                .WithMany(b => b.BoughtBooks)
                 .HasForeignKey(st => st.BookId);
             
 
