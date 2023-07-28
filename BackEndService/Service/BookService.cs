@@ -37,5 +37,9 @@ namespace BackEndService.Service
                 _libdb.SaveChanges();
             }
         }
+        public void BookTaken<T>(T book, int n = 1) where T: BookOperation, BookStudent
+        {
+
+        }
     }
 }
