@@ -14,7 +14,7 @@ namespace BackEndService.Service
             _libdb.Librarian.Add(librarian);
             _libdb.SaveChanges();
         }
-        public IList<Librarian> GetAll()
+        public List<Librarian> GetAll()
         {
             return _libdb.Librarian.ToList();
         }

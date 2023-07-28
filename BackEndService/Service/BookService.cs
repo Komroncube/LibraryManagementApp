@@ -20,7 +20,7 @@ namespace BackEndService.Service
             _libdb.SaveChanges();
 
         }
-        public IList<Book> GetAll() 
+        public List<Book> GetAll() 
         {
             return _libdb.Books.ToList();
         }

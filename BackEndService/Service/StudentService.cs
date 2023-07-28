@@ -14,7 +14,7 @@
             _libdb.SaveChanges();
 
         }
-        public IList<Student> GetAll()
+        public List<Student> GetAll()
         {
             return _libdb.Students.AsNoTracking().ToList();
         }
