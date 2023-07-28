@@ -5,6 +5,7 @@ namespace FrontEnd
     public partial class LoginPage : Form
     {
         bool devmode = false;
+
         public LoginPage()
         {
             InitializeComponent();
