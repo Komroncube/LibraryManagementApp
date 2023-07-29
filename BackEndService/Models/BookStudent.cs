@@ -14,5 +14,7 @@ namespace BackEndService.Models
         public DateTime IssueDate { get; set; }
         public Status Status { get; set; }
         public DateTime? ReturnDate { get; set; }
+        public BookStudent() => Id = Guid.NewGuid();
+
     }
 }

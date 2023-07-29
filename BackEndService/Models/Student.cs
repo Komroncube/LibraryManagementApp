@@ -14,6 +14,10 @@ namespace BackEndService.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public Faculty Faculty { get; set; }
+        public Student()
+        {
+            Id = Guid.NewGuid();
+        }
         public ICollection<BookStudent> BookStudents { get; set; }
         public ICollection<BoughtBooks> BoughtBooks { get; set; }
 

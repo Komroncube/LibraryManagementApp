@@ -16,6 +16,7 @@ namespace BackEndService.Models
         public Book Book { get; set; }
         public int Quantity { get; set; }
         public DateTime BoughtTime { get; set; }
+        public BoughtBooks() => Id = Guid.NewGuid();
 
     }
 }
