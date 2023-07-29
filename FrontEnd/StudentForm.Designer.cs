@@ -48,13 +48,15 @@
             // 
             dataview.AllowUserToAddRows = false;
             dataview.AllowUserToDeleteRows = false;
+            dataview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataview.Location = new Point(0, 352);
+            dataview.Dock = DockStyle.Bottom;
+            dataview.Location = new Point(0, 327);
             dataview.Name = "dataview";
             dataview.ReadOnly = true;
             dataview.RowHeadersWidth = 62;
             dataview.RowTemplate.Height = 33;
-            dataview.Size = new Size(1380, 493);
+            dataview.Size = new Size(1378, 493);
             dataview.TabIndex = 0;
             // 
             // first_lbl
@@ -116,10 +118,11 @@
             // 
             // faculty
             // 
+            faculty.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             faculty.FormattingEnabled = true;
             faculty.Location = new Point(216, 224);
             faculty.Name = "faculty";
-            faculty.Size = new Size(248, 40);
+            faculty.Size = new Size(329, 36);
             faculty.TabIndex = 3;
             // 
             // edit_btn
@@ -132,6 +135,7 @@
             edit_btn.TabIndex = 4;
             edit_btn.Text = "Edit";
             edit_btn.UseVisualStyleBackColor = false;
+            edit_btn.Click += edit_btn_Click;
             // 
             // new_btn
             // 
@@ -143,6 +147,7 @@
             new_btn.TabIndex = 4;
             new_btn.Text = "New";
             new_btn.UseVisualStyleBackColor = false;
+            new_btn.Click += new_btn_Click;
             // 
             // delete_btn
             // 
@@ -154,6 +159,7 @@
             delete_btn.TabIndex = 4;
             delete_btn.Text = "Delete";
             delete_btn.UseVisualStyleBackColor = false;
+            delete_btn.Click += delete_btn_Click;
             // 
             // save_btn
             // 
@@ -165,6 +171,7 @@
             save_btn.TabIndex = 4;
             save_btn.Text = "Save";
             save_btn.UseVisualStyleBackColor = false;
+            save_btn.Click += save_btn_Click;
             // 
             // StudentForm
             // 
