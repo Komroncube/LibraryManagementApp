@@ -8,10 +8,15 @@
             _libdb.Students.Add(student);
             _libdb.SaveChanges();
         }
-        public void Delete(Student student)
+        public void Delete(Guid id)
         {
-            _libdb.Students.Remove(student);
-            _libdb.SaveChanges();
+            var entity = _libdb.Students.FirstOrDefault(x =>x.Id ==id);
+            if (entity != null)
+            {
+                _libdb.Students.Remove(entity);
+                _libdb.SaveChanges();
+
+            }
 
         }
         public List<Student> GetAll()

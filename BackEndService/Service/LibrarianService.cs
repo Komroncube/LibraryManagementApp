@@ -18,10 +18,14 @@ namespace BackEndService.Service
         {
             return _libdb.Librarian.ToList();
         }
-        public void Delete(Librarian librarian)
+        public void Delete(Guid id)
         {
-            _libdb.Librarian.Remove(librarian);
-            _libdb.SaveChanges();
+            var entity = _libdb.Librarian.FirstOrDefault(x =>x.Id ==id);
+            if(entity!= null)
+            {
+                _libdb.Librarian.Remove(entity);
+                _libdb.SaveChanges();
+            }
         }
         public void Update(Librarian librarian)
         {
@@ -35,6 +39,14 @@ namespace BackEndService.Service
                 lb.Password = librarian.Password;
                 _libdb.SaveChanges();
             }
+        }
+        public bool isExist(string username)
+        {
+            return _libdb.Librarian.Where(x=>x.UserName == username).Any();
+        }
+        public bool CheckUser(string username, string password)
+        {
+            return _libdb.Librarian.Where(x => x.UserName ==username && x.Password == password).Any();
         }
     }
 }

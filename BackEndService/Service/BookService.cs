@@ -14,11 +14,15 @@ namespace BackEndService.Service
             _libdb.Books.Add(book);
             _libdb.SaveChanges();
         }
-        public void Delete(Book book)
+        public void Delete(Guid id)
         {
-            _libdb.Books.Remove(book);
-            _libdb.SaveChanges();
+            var entity = _libdb.Books.FirstOrDefault(x => x.Id == id);
+            if (entity != null)
+            {
+                _libdb.Books.Remove(entity);
+                _libdb.SaveChanges();
 
+            }
         }
         public List<Book> GetAll() 
         {
