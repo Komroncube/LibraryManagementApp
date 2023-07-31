@@ -75,7 +75,8 @@ namespace FrontEnd
                     Guid delitem = Guid.Parse(studentlistview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString());
 
                     studentlistview.Rows[dataview.CurrentCell.RowIndex].Delete();
-                    new StudentService().Delete(ParseRowToStudent());
+                    new StudentService().Delete(delitem);
+
                 }
 
             }
