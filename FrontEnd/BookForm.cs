@@ -36,6 +36,7 @@ namespace FrontEnd
             }
             dataview.DataSource = bookgridview;
             dataview.Columns[0].Visible = false;
+            dataview.Columns["Description"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
         private bool isValid(out double value)
         {
@@ -53,10 +54,10 @@ namespace FrontEnd
             if (!double.TryParse(price_input.Text.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out value))
             {
                 MessageBox.Show("Kitobning narxini to'g'ri kiriting");
-                price_lbl.ForeColor = Color.Red; 
+                price_lbl.ForeColor = Color.Red;
                 isvalid = false;
             }
-            if (quantity_updown.Value<0)
+            if (quantity_updown.Value < 0)
             {
                 quantity_lbl.ForeColor = Color.Red;
                 quantity_updown.Value = 0;
@@ -145,5 +146,37 @@ namespace FrontEnd
                 ClearFields();
             }
         }
+
+
+        //editing cell size
+        #region editing_cell_size
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var cell = dataview.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell != null && cell.Value != null)
+                {
+                    // Calculate the required height for the cell
+                    int preferredHeight = CalculatePreferredRowHeight(dataview.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+
+                    // Set the row height
+                    if (dataview.Rows[e.RowIndex].Height < preferredHeight)
+                    {
+                        dataview.Rows[e.RowIndex].Height = preferredHeight;
+                    }
+                }
+            }
+        }
+
+        private int CalculatePreferredRowHeight(string cellText)
+        {
+            using (Graphics graphics = dataview.CreateGraphics())
+            {
+                SizeF size = graphics.MeasureString(cellText, dataview.Font, dataview.Columns["Description"].Width);
+                return (int)size.Height + 5; // Add some extra padding
+            }
+        }
+        #endregion editing_cell_size
     }
 }

@@ -182,6 +182,7 @@
             dataview.RowTemplate.Height = 33;
             dataview.Size = new Size(1378, 493);
             dataview.TabIndex = 18;
+            dataview.CellFormatting += dataGridView_CellFormatting;
             // 
             // quantity_updown
             // 
@@ -212,6 +213,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "BookForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BookForm";
             ((System.ComponentModel.ISupportInitialize)dataview).EndInit();
             ((System.ComponentModel.ISupportInitialize)quantity_updown).EndInit();
