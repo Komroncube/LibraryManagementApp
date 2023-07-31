@@ -62,7 +62,7 @@
             // first_lbl
             // 
             first_lbl.AutoSize = true;
-            first_lbl.Location = new Point(43, 40);
+            first_lbl.Location = new Point(43, 82);
             first_lbl.Name = "first_lbl";
             first_lbl.Size = new Size(125, 32);
             first_lbl.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             // firstname_input
             // 
-            firstname_input.Location = new Point(216, 40);
+            firstname_input.Location = new Point(216, 82);
             firstname_input.Name = "firstname_input";
             firstname_input.Size = new Size(248, 39);
             firstname_input.TabIndex = 2;
@@ -78,7 +78,7 @@
             // last_lbl
             // 
             last_lbl.AutoSize = true;
-            last_lbl.Location = new Point(43, 102);
+            last_lbl.Location = new Point(43, 144);
             last_lbl.Name = "last_lbl";
             last_lbl.Size = new Size(122, 32);
             last_lbl.TabIndex = 1;
@@ -86,7 +86,7 @@
             // 
             // lastname_input
             // 
-            lastname_input.Location = new Point(216, 96);
+            lastname_input.Location = new Point(216, 138);
             lastname_input.Name = "lastname_input";
             lastname_input.Size = new Size(248, 39);
             lastname_input.TabIndex = 2;
@@ -94,7 +94,7 @@
             // phone_lbl
             // 
             phone_lbl.AutoSize = true;
-            phone_lbl.Location = new Point(43, 164);
+            phone_lbl.Location = new Point(43, 206);
             phone_lbl.Name = "phone_lbl";
             phone_lbl.Size = new Size(173, 32);
             phone_lbl.TabIndex = 1;
@@ -102,7 +102,7 @@
             // 
             // phone_input
             // 
-            phone_input.Location = new Point(216, 160);
+            phone_input.Location = new Point(216, 202);
             phone_input.Name = "phone_input";
             phone_input.Size = new Size(248, 39);
             phone_input.TabIndex = 2;
@@ -110,7 +110,7 @@
             // fac_lbl
             // 
             fac_lbl.AutoSize = true;
-            fac_lbl.Location = new Point(43, 226);
+            fac_lbl.Location = new Point(43, 268);
             fac_lbl.Name = "fac_lbl";
             fac_lbl.Size = new Size(88, 32);
             fac_lbl.TabIndex = 1;
@@ -120,7 +120,7 @@
             // 
             faculty.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             faculty.FormattingEnabled = true;
-            faculty.Location = new Point(216, 224);
+            faculty.Location = new Point(216, 266);
             faculty.Name = "faculty";
             faculty.Size = new Size(329, 36);
             faculty.TabIndex = 3;
@@ -129,7 +129,7 @@
             // 
             edit_btn.BackColor = Color.Transparent;
             edit_btn.FlatStyle = FlatStyle.Flat;
-            edit_btn.Location = new Point(965, 72);
+            edit_btn.Location = new Point(965, 114);
             edit_btn.Name = "edit_btn";
             edit_btn.Size = new Size(145, 70);
             edit_btn.TabIndex = 4;
@@ -141,7 +141,7 @@
             // 
             new_btn.BackColor = Color.Transparent;
             new_btn.FlatStyle = FlatStyle.Flat;
-            new_btn.Location = new Point(802, 72);
+            new_btn.Location = new Point(802, 114);
             new_btn.Name = "new_btn";
             new_btn.Size = new Size(145, 70);
             new_btn.TabIndex = 4;
@@ -153,7 +153,7 @@
             // 
             delete_btn.BackColor = Color.Transparent;
             delete_btn.FlatStyle = FlatStyle.Flat;
-            delete_btn.Location = new Point(802, 170);
+            delete_btn.Location = new Point(802, 212);
             delete_btn.Name = "delete_btn";
             delete_btn.Size = new Size(145, 70);
             delete_btn.TabIndex = 4;
@@ -165,7 +165,7 @@
             // 
             save_btn.BackColor = Color.Transparent;
             save_btn.FlatStyle = FlatStyle.Flat;
-            save_btn.Location = new Point(965, 170);
+            save_btn.Location = new Point(965, 212);
             save_btn.Name = "save_btn";
             save_btn.Size = new Size(145, 70);
             save_btn.TabIndex = 4;

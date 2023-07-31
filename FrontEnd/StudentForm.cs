@@ -6,12 +6,11 @@ namespace FrontEnd
     public partial class StudentForm : Form
     {
         private DataTable studentlistview;
-        private List<Student> studentlist;
         bool isediting;
         public StudentForm()
         {
             InitializeComponent();
-            studentlist = new StudentService().GetAll();
+            List<Student> studentlist = new StudentService().GetAll();
 
             //gridview table
             studentlistview = new DataTable();
@@ -33,13 +32,12 @@ namespace FrontEnd
             {
                 faculty.Items.Add(EnumService.EnumToString(item));
             }
-            Console.WriteLine("");
             faculty.SelectedIndex = -1;
         }
 
         private void new_btn_Click(object sender, EventArgs e)
         {
-            
+
             ClearFields();
         }
 
@@ -75,7 +73,7 @@ namespace FrontEnd
                 if (isediting == false)
                 {
                     Guid delitem = Guid.Parse(studentlistview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString());
-                    
+
                     studentlistview.Rows[dataview.CurrentCell.RowIndex].Delete();
                     new StudentService().Delete(ParseRowToStudent());
                 }
@@ -89,15 +87,15 @@ namespace FrontEnd
 
         private void save_btn_Click(object sender, EventArgs e)
         {
-            
-            
-            if(isValid())
+
+
+            if (isValid())
             {
                 if (isediting)
                 {
-                    studentlistview.Rows[dataview.CurrentCell.RowIndex]["First name"] = firstname_input.Text;
-                    studentlistview.Rows[dataview.CurrentCell.RowIndex]["Last name"] = lastname_input.Text;
-                    studentlistview.Rows[dataview.CurrentCell.RowIndex]["Phone number"] = phone_input.Text;
+                    studentlistview.Rows[dataview.CurrentCell.RowIndex]["First name"] = firstname_input.Text.Trim();
+                    studentlistview.Rows[dataview.CurrentCell.RowIndex]["Last name"] = lastname_input.Text.Trim();
+                    studentlistview.Rows[dataview.CurrentCell.RowIndex]["Phone number"] = phone_input.Text.Trim();
                     studentlistview.Rows[dataview.CurrentCell.RowIndex]["Faculty"] = faculty.SelectedItem.ToString();
                     new StudentService().Update(ParseRowToStudent());
                     isediting = false;
@@ -106,16 +104,16 @@ namespace FrontEnd
                 {
                     var std = new Student()
                     {
-                        FirstName = firstname_input.Text,
-                        LastName = lastname_input.Text,
-                        PhoneNumber = phone_input.Text,
+                        FirstName = firstname_input.Text.Trim(),
+                        LastName = lastname_input.Text.Trim(),
+                        PhoneNumber = phone_input.Text.Trim(),
                         Faculty = EnumService.StringToEnum(faculty.SelectedItem.ToString())
                     };
                     new StudentService().Create(std);
                     studentlistview.Rows.Add(std.Id, std.FirstName, std.LastName, std.PhoneNumber, faculty.Text);
                 }
                 ClearFields();
-                
+
             }
         }
 
@@ -132,7 +130,7 @@ namespace FrontEnd
                 last_lbl.ForeColor = Color.Red;
                 isvalid = false;
             }
-            if (phone_input.Text == "" || phone_input.Text.Length!=12)
+            if (phone_input.Text == "" || phone_input.Text.Length != 12)
             {
                 phone_lbl.ForeColor = Color.Red;
                 isvalid = false;
