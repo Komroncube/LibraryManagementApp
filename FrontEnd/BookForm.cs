@@ -37,6 +37,8 @@ namespace FrontEnd
             dataview.DataSource = bookgridview;
             dataview.Columns[0].Visible = false;
             dataview.Columns["Description"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataview.Columns["Author"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            
         }
         private bool isValid(out double value)
         {
