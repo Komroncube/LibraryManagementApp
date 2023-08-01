@@ -64,7 +64,7 @@
             // student_input
             // 
             student_input.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            student_input.Location = new Point(131, 145);
+            student_input.Location = new Point(131, 142);
             student_input.Name = "student_input";
             student_input.PlaceholderText = "firstname or lastname";
             student_input.Size = new Size(260, 35);
@@ -106,6 +106,7 @@
             studentdataview.RowTemplate.Height = 33;
             studentdataview.Size = new Size(792, 257);
             studentdataview.TabIndex = 3;
+            studentdataview.CellFormatting += studentdataGridView_CellFormatting;
             // 
             // bookdataview
             // 
@@ -121,6 +122,7 @@
             bookdataview.RowTemplate.Height = 33;
             bookdataview.Size = new Size(792, 309);
             bookdataview.TabIndex = 3;
+            bookdataview.CellFormatting += bookdataGridView_CellFormatting;
             // 
             // label1
             // 
