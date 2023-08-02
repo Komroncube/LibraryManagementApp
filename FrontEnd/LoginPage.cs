@@ -4,7 +4,7 @@ namespace FrontEnd
 {
     public partial class LoginPage : Form
     {
-        bool devmode = false;
+        Guid id;
         public LoginPage()
         {
             InitializeComponent();
@@ -26,37 +26,43 @@ namespace FrontEnd
         private void sign_btn_Click(object sender, EventArgs e)
         {
             bool isvalid = true;
-            if (devmode)
+            if (username_input.Text == "")
             {
-
+                isvalid = false;
+            }
+            if (pass_input.Text == "")
+            {
+                isvalid = false;
+            }
+            LibraryManagementDb db = new LibraryManagementDb();
+            if (isvalid == false)
+            {
+                MessageBox.Show("Invalid username or password");
             }
             else
             {
-                if (username_input.Text == "")
+
+                if (new LibrarianService().CheckUser(username_input.Text, pass_input.Text, out id))
                 {
-                    isvalid = false;
-                }
-                if (pass_input.Text == "")
-                {
-                    isvalid = false;
-                }
-                LibraryManagementDb db = new LibraryManagementDb();
-                if (isvalid==false)
-                {
-                        MessageBox.Show("Invalid username or password");
+                    MainPage mainPage = new MainPage(id);
+                    mainPage.FormClosing += MainPage_FormClosing;
+                    mainPage.Show();
+                    this.Hide();
+
                 }
                 else
                 {
-                    var res = db.Librarian.FirstOrDefault(x => x.UserName == username_input.Text && x.Password == pass_input.Text);
-                    if (res != null)
-                    {
-                        //yangi window opens
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid username or password");
-                    }
+                    MessageBox.Show("Invalid username or password");
                 }
+            }
+
+        }
+        private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                e.Cancel = true;
+                Application.Exit();
             }
         }
     }
