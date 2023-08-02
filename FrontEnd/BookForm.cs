@@ -38,7 +38,7 @@ namespace FrontEnd
             dataview.Columns[0].Visible = false;
             dataview.Columns["Description"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataview.Columns["Author"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            
+
         }
         private bool isValid(out double value)
         {
@@ -69,10 +69,10 @@ namespace FrontEnd
         }
         private void ClearFields()
         {
-            title_lbl.ForeColor = Color.Black;
-            author_lbl.ForeColor = Color.Black;
-            price_lbl.ForeColor = Color.Black;
-            quantity_lbl.ForeColor = Color.Black;
+            title_lbl.ForeColor = Color.Cyan;
+            author_lbl.ForeColor = Color.Cyan;
+            price_lbl.ForeColor = Color.Cyan;
+            quantity_lbl.ForeColor = Color.Cyan;
             title_input.Clear();
             description_input.Clear();
             author_input.Clear();

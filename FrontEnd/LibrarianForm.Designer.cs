@@ -43,6 +43,7 @@
             username_input = new TextBox();
             password_lbl = new Label();
             password_input = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataview).BeginInit();
             SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             // 
             save_btn.BackColor = Color.Transparent;
             save_btn.FlatStyle = FlatStyle.Flat;
+            save_btn.ForeColor = Color.Lime;
             save_btn.Location = new Point(955, 232);
             save_btn.Name = "save_btn";
             save_btn.Size = new Size(145, 70);
@@ -62,6 +64,7 @@
             // 
             delete_btn.BackColor = Color.Transparent;
             delete_btn.FlatStyle = FlatStyle.Flat;
+            delete_btn.ForeColor = Color.Red;
             delete_btn.Location = new Point(792, 232);
             delete_btn.Name = "delete_btn";
             delete_btn.Size = new Size(145, 70);
@@ -74,6 +77,7 @@
             // 
             new_btn.BackColor = Color.Transparent;
             new_btn.FlatStyle = FlatStyle.Flat;
+            new_btn.ForeColor = Color.White;
             new_btn.Location = new Point(792, 134);
             new_btn.Name = "new_btn";
             new_btn.Size = new Size(145, 70);
@@ -86,6 +90,7 @@
             // 
             edit_btn.BackColor = Color.Transparent;
             edit_btn.FlatStyle = FlatStyle.Flat;
+            edit_btn.ForeColor = Color.Cyan;
             edit_btn.Location = new Point(955, 134);
             edit_btn.Name = "edit_btn";
             edit_btn.Size = new Size(145, 70);
@@ -104,6 +109,7 @@
             // phone_lbl
             // 
             phone_lbl.AutoSize = true;
+            phone_lbl.ForeColor = Color.Cyan;
             phone_lbl.Location = new Point(33, 181);
             phone_lbl.Name = "phone_lbl";
             phone_lbl.Size = new Size(173, 32);
@@ -120,6 +126,7 @@
             // lastname_lbl
             // 
             lastname_lbl.AutoSize = true;
+            lastname_lbl.ForeColor = Color.Cyan;
             lastname_lbl.Location = new Point(33, 136);
             lastname_lbl.Name = "lastname_lbl";
             lastname_lbl.Size = new Size(122, 32);
@@ -136,6 +143,7 @@
             // firstname_lbl
             // 
             firstname_lbl.AutoSize = true;
+            firstname_lbl.ForeColor = Color.Cyan;
             firstname_lbl.Location = new Point(33, 91);
             firstname_lbl.Name = "firstname_lbl";
             firstname_lbl.Size = new Size(125, 32);
@@ -160,6 +168,7 @@
             // username_lbl
             // 
             username_lbl.AutoSize = true;
+            username_lbl.ForeColor = Color.Cyan;
             username_lbl.Location = new Point(33, 226);
             username_lbl.Name = "username_lbl";
             username_lbl.Size = new Size(121, 32);
@@ -176,6 +185,7 @@
             // password_lbl
             // 
             password_lbl.AutoSize = true;
+            password_lbl.ForeColor = Color.Cyan;
             password_lbl.Location = new Point(33, 271);
             password_lbl.Name = "password_lbl";
             password_lbl.Size = new Size(111, 32);
@@ -189,10 +199,23 @@
             password_input.Size = new Size(248, 39);
             password_input.TabIndex = 12;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(544, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(196, 48);
+            label1.TabIndex = 18;
+            label1.Text = "Librarians";
+            // 
             // LibrarianForm
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.FromArgb(0, 0, 64);
             ClientSize = new Size(1378, 820);
+            Controls.Add(label1);
             Controls.Add(save_btn);
             Controls.Add(delete_btn);
             Controls.Add(new_btn);
@@ -235,5 +258,6 @@
         private TextBox username_input;
         private Label password_lbl;
         private TextBox password_input;
+        private Label label1;
     }
 }

@@ -51,6 +51,7 @@
             // 
             save_btn.BackColor = Color.Transparent;
             save_btn.FlatStyle = FlatStyle.Flat;
+            save_btn.ForeColor = Color.Lime;
             save_btn.Location = new Point(955, 187);
             save_btn.Name = "save_btn";
             save_btn.Size = new Size(145, 70);
@@ -63,6 +64,7 @@
             // 
             delete_btn.BackColor = Color.Transparent;
             delete_btn.FlatStyle = FlatStyle.Flat;
+            delete_btn.ForeColor = Color.Red;
             delete_btn.Location = new Point(792, 187);
             delete_btn.Name = "delete_btn";
             delete_btn.Size = new Size(145, 70);
@@ -75,6 +77,7 @@
             // 
             new_btn.BackColor = Color.Transparent;
             new_btn.FlatStyle = FlatStyle.Flat;
+            new_btn.ForeColor = Color.White;
             new_btn.Location = new Point(792, 89);
             new_btn.Name = "new_btn";
             new_btn.Size = new Size(145, 70);
@@ -87,6 +90,7 @@
             // 
             edit_btn.BackColor = Color.Transparent;
             edit_btn.FlatStyle = FlatStyle.Flat;
+            edit_btn.ForeColor = Color.Cyan;
             edit_btn.Location = new Point(955, 89);
             edit_btn.Name = "edit_btn";
             edit_btn.Size = new Size(145, 70);
@@ -105,6 +109,7 @@
             // author_lbl
             // 
             author_lbl.AutoSize = true;
+            author_lbl.ForeColor = Color.Cyan;
             author_lbl.Location = new Point(33, 136);
             author_lbl.Name = "author_lbl";
             author_lbl.Size = new Size(87, 32);
@@ -121,6 +126,7 @@
             // description_lbl
             // 
             description_lbl.AutoSize = true;
+            description_lbl.ForeColor = Color.Cyan;
             description_lbl.Location = new Point(33, 91);
             description_lbl.Name = "description_lbl";
             description_lbl.Size = new Size(135, 32);
@@ -137,6 +143,7 @@
             // quantity_lbl
             // 
             quantity_lbl.AutoSize = true;
+            quantity_lbl.ForeColor = Color.Cyan;
             quantity_lbl.Location = new Point(33, 226);
             quantity_lbl.Name = "quantity_lbl";
             quantity_lbl.Size = new Size(106, 32);
@@ -146,6 +153,7 @@
             // price_lbl
             // 
             price_lbl.AutoSize = true;
+            price_lbl.ForeColor = Color.Cyan;
             price_lbl.Location = new Point(33, 181);
             price_lbl.Name = "price_lbl";
             price_lbl.Size = new Size(65, 32);
@@ -162,6 +170,7 @@
             // title_lbl
             // 
             title_lbl.AutoSize = true;
+            title_lbl.ForeColor = Color.Cyan;
             title_lbl.Location = new Point(33, 46);
             title_lbl.Name = "title_lbl";
             title_lbl.Size = new Size(60, 32);
@@ -194,6 +203,8 @@
             // BookForm
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.FromArgb(0, 0, 64);
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1378, 820);
             Controls.Add(quantity_updown);
             Controls.Add(save_btn);
