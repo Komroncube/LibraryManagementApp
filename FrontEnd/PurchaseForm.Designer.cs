@@ -30,15 +30,20 @@
         {
             bookdataview = new DataGridView();
             studentdataview = new DataGridView();
-            issue_btn = new Button();
+            buy_btn = new Button();
             book_input = new TextBox();
             student_input = new TextBox();
             book_lbl = new Label();
             label2 = new Label();
             label1 = new Label();
             student_lbl = new Label();
+            quantity_lbl = new Label();
+            quantity_input = new NumericUpDown();
+            price_lbl = new Label();
+            price_input = new TextBox();
             ((System.ComponentModel.ISupportInitialize)bookdataview).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentdataview).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)quantity_input).BeginInit();
             SuspendLayout();
             // 
             // bookdataview
@@ -71,33 +76,37 @@
             studentdataview.RowTemplate.Height = 33;
             studentdataview.Size = new Size(792, 257);
             studentdataview.TabIndex = 12;
+            studentdataview.CellFormatting += studentdataGridView_CellFormatting;
             // 
-            // issue_btn
+            // buy_btn
             // 
-            issue_btn.Location = new Point(152, 381);
-            issue_btn.Name = "issue_btn";
-            issue_btn.Size = new Size(151, 55);
-            issue_btn.TabIndex = 10;
-            issue_btn.Text = "Issue book";
-            issue_btn.UseVisualStyleBackColor = true;
+            buy_btn.Location = new Point(152, 381);
+            buy_btn.Name = "buy_btn";
+            buy_btn.Size = new Size(151, 55);
+            buy_btn.TabIndex = 10;
+            buy_btn.Text = "Buy book";
+            buy_btn.UseVisualStyleBackColor = true;
+            buy_btn.Click += buy_btn_Click;
             // 
             // book_input
             // 
             book_input.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            book_input.Location = new Point(131, 223);
+            book_input.Location = new Point(161, 223);
             book_input.Name = "book_input";
             book_input.PlaceholderText = "any information about book";
             book_input.Size = new Size(260, 32);
             book_input.TabIndex = 8;
+            book_input.TextChanged += book_input_TextChanged;
             // 
             // student_input
             // 
             student_input.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            student_input.Location = new Point(131, 182);
+            student_input.Location = new Point(161, 182);
             student_input.Name = "student_input";
             student_input.PlaceholderText = "firstname or lastname";
             student_input.Size = new Size(260, 35);
             student_input.TabIndex = 9;
+            student_input.TextChanged += student_input_TextChanged;
             // 
             // book_lbl
             // 
@@ -139,28 +148,72 @@
             student_lbl.TabIndex = 7;
             student_lbl.Text = "Student";
             // 
+            // quantity_lbl
+            // 
+            quantity_lbl.AutoSize = true;
+            quantity_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            quantity_lbl.Location = new Point(4, 263);
+            quantity_lbl.Name = "quantity_lbl";
+            quantity_lbl.Size = new Size(121, 32);
+            quantity_lbl.TabIndex = 4;
+            quantity_lbl.Text = "Quantity";
+            // 
+            // quantity_input
+            // 
+            quantity_input.Location = new Point(161, 261);
+            quantity_input.Name = "quantity_input";
+            quantity_input.Size = new Size(154, 39);
+            quantity_input.TabIndex = 13;
+            quantity_input.ValueChanged += quantity_input_ValueChanged;
+            // 
+            // price_lbl
+            // 
+            price_lbl.AutoSize = true;
+            price_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            price_lbl.Location = new Point(4, 308);
+            price_lbl.Name = "price_lbl";
+            price_lbl.Size = new Size(147, 32);
+            price_lbl.TabIndex = 4;
+            price_lbl.Text = "Total price";
+            // 
+            // price_input
+            // 
+            price_input.Enabled = false;
+            price_input.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            price_input.Location = new Point(161, 310);
+            price_input.Name = "price_input";
+            price_input.PlaceholderText = "price";
+            price_input.Size = new Size(260, 32);
+            price_input.TabIndex = 8;
+            price_input.Text = "0";
+            // 
             // PurchaseForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1378, 820);
+            Controls.Add(quantity_input);
             Controls.Add(bookdataview);
             Controls.Add(studentdataview);
-            Controls.Add(issue_btn);
+            Controls.Add(buy_btn);
+            Controls.Add(price_input);
             Controls.Add(book_input);
+            Controls.Add(price_lbl);
             Controls.Add(student_input);
+            Controls.Add(quantity_lbl);
             Controls.Add(book_lbl);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(student_lbl);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "PurchaseForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Purchase book";
             ((System.ComponentModel.ISupportInitialize)bookdataview).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentdataview).EndInit();
+            ((System.ComponentModel.ISupportInitialize)quantity_input).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -169,12 +222,16 @@
 
         private DataGridView bookdataview;
         private DataGridView studentdataview;
-        private Button issue_btn;
+        private Button buy_btn;
         private TextBox book_input;
         private TextBox student_input;
         private Label book_lbl;
         private Label label2;
         private Label label1;
         private Label student_lbl;
+        private Label quantity_lbl;
+        private NumericUpDown quantity_input;
+        private Label price_lbl;
+        private TextBox price_input;
     }
 }
