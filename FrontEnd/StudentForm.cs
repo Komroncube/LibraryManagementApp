@@ -45,10 +45,10 @@ namespace FrontEnd
 
         private void ClearFields()
         {
-            first_lbl.ForeColor = Color.Black;
-            last_lbl.ForeColor = Color.Black;
-            phone_lbl.ForeColor = Color.Black;
-            fac_lbl.ForeColor = Color.Black;
+            first_lbl.ForeColor = Color.Cyan;
+            last_lbl.ForeColor = Color.Cyan;
+            phone_lbl.ForeColor = Color.Cyan;
+            fac_lbl.ForeColor = Color.Cyan;
             firstname_input.Clear();
             lastname_input.Clear();
             phone_input.Clear();
