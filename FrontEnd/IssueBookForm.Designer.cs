@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueBookForm));
             student_lbl = new Label();
             book_lbl = new Label();
             student_input = new TextBox();
@@ -44,7 +45,9 @@
             // student_lbl
             // 
             student_lbl.AutoSize = true;
+            student_lbl.BackColor = Color.Transparent;
             student_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            student_lbl.ForeColor = Color.White;
             student_lbl.Location = new Point(12, 143);
             student_lbl.Name = "student_lbl";
             student_lbl.Size = new Size(113, 32);
@@ -54,7 +57,9 @@
             // book_lbl
             // 
             book_lbl.AutoSize = true;
+            book_lbl.BackColor = Color.Transparent;
             book_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            book_lbl.ForeColor = Color.White;
             book_lbl.Location = new Point(12, 239);
             book_lbl.Name = "book_lbl";
             book_lbl.Size = new Size(79, 32);
@@ -83,12 +88,16 @@
             // 
             // issue_btn
             // 
+            issue_btn.BackColor = Color.Transparent;
+            issue_btn.FlatStyle = FlatStyle.Flat;
+            issue_btn.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            issue_btn.ForeColor = Color.Lime;
             issue_btn.Location = new Point(152, 341);
             issue_btn.Name = "issue_btn";
             issue_btn.Size = new Size(151, 55);
             issue_btn.TabIndex = 2;
             issue_btn.Text = "Issue book";
-            issue_btn.UseVisualStyleBackColor = true;
+            issue_btn.UseVisualStyleBackColor = false;
             issue_btn.Click += issue_btn_Click;
             // 
             // studentdataview
@@ -104,7 +113,7 @@
             studentdataview.ReadOnly = true;
             studentdataview.RowHeadersWidth = 62;
             studentdataview.RowTemplate.Height = 33;
-            studentdataview.Size = new Size(792, 257);
+            studentdataview.Size = new Size(792, 278);
             studentdataview.TabIndex = 3;
             studentdataview.CellFormatting += studentdataGridView_CellFormatting;
             // 
@@ -127,20 +136,24 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Transparent;
             label1.Location = new Point(919, 9);
             label1.Name = "label1";
-            label1.Size = new Size(124, 38);
+            label1.Size = new Size(158, 45);
             label1.TabIndex = 0;
             label1.Text = "Students";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.Transparent;
             label2.Location = new Point(936, 358);
             label2.Name = "label2";
-            label2.Size = new Size(91, 38);
+            label2.Size = new Size(116, 45);
             label2.TabIndex = 0;
             label2.Text = "Books";
             // 
@@ -148,6 +161,8 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1378, 744);
             Controls.Add(bookdataview);
             Controls.Add(studentdataview);

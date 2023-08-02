@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseForm));
             bookdataview = new DataGridView();
             studentdataview = new DataGridView();
             buy_btn = new Button();
@@ -58,7 +59,7 @@
             bookdataview.ReadOnly = true;
             bookdataview.RowHeadersWidth = 62;
             bookdataview.RowTemplate.Height = 33;
-            bookdataview.Size = new Size(792, 309);
+            bookdataview.Size = new Size(792, 345);
             bookdataview.TabIndex = 11;
             // 
             // studentdataview
@@ -80,18 +81,22 @@
             // 
             // buy_btn
             // 
-            buy_btn.Location = new Point(152, 381);
+            buy_btn.BackColor = Color.Yellow;
+            buy_btn.FlatStyle = FlatStyle.Flat;
+            buy_btn.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            buy_btn.ForeColor = Color.Red;
+            buy_btn.Location = new Point(165, 269);
             buy_btn.Name = "buy_btn";
-            buy_btn.Size = new Size(151, 55);
+            buy_btn.Size = new Size(178, 68);
             buy_btn.TabIndex = 10;
             buy_btn.Text = "Buy book";
-            buy_btn.UseVisualStyleBackColor = true;
+            buy_btn.UseVisualStyleBackColor = false;
             buy_btn.Click += buy_btn_Click;
             // 
             // book_input
             // 
             book_input.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            book_input.Location = new Point(161, 223);
+            book_input.Location = new Point(162, 146);
             book_input.Name = "book_input";
             book_input.PlaceholderText = "any information about book";
             book_input.Size = new Size(260, 32);
@@ -101,7 +106,7 @@
             // student_input
             // 
             student_input.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            student_input.Location = new Point(161, 182);
+            student_input.Location = new Point(162, 104);
             student_input.Name = "student_input";
             student_input.PlaceholderText = "firstname or lastname";
             student_input.Size = new Size(260, 35);
@@ -111,56 +116,66 @@
             // book_lbl
             // 
             book_lbl.AutoSize = true;
-            book_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            book_lbl.Location = new Point(12, 222);
+            book_lbl.BackColor = Color.Transparent;
+            book_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            book_lbl.ForeColor = Color.White;
+            book_lbl.Location = new Point(13, 144);
             book_lbl.Name = "book_lbl";
-            book_lbl.Size = new Size(79, 32);
+            book_lbl.Size = new Size(83, 32);
             book_lbl.TabIndex = 4;
             book_lbl.Text = "Book";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(936, 398);
             label2.Name = "label2";
-            label2.Size = new Size(91, 38);
+            label2.Size = new Size(116, 45);
             label2.TabIndex = 5;
             label2.Text = "Books";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(919, 49);
             label1.Name = "label1";
-            label1.Size = new Size(124, 38);
+            label1.Size = new Size(158, 45);
             label1.TabIndex = 6;
             label1.Text = "Students";
             // 
             // student_lbl
             // 
             student_lbl.AutoSize = true;
-            student_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            student_lbl.Location = new Point(12, 183);
+            student_lbl.BackColor = Color.Transparent;
+            student_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            student_lbl.ForeColor = Color.White;
+            student_lbl.Location = new Point(13, 105);
             student_lbl.Name = "student_lbl";
-            student_lbl.Size = new Size(113, 32);
+            student_lbl.Size = new Size(120, 32);
             student_lbl.TabIndex = 7;
             student_lbl.Text = "Student";
             // 
             // quantity_lbl
             // 
             quantity_lbl.AutoSize = true;
-            quantity_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            quantity_lbl.Location = new Point(4, 263);
+            quantity_lbl.BackColor = Color.Transparent;
+            quantity_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            quantity_lbl.ForeColor = Color.White;
+            quantity_lbl.Location = new Point(13, 185);
             quantity_lbl.Name = "quantity_lbl";
-            quantity_lbl.Size = new Size(121, 32);
+            quantity_lbl.Size = new Size(129, 32);
             quantity_lbl.TabIndex = 4;
             quantity_lbl.Text = "Quantity";
             // 
             // quantity_input
             // 
-            quantity_input.Location = new Point(161, 261);
+            quantity_input.Location = new Point(162, 185);
             quantity_input.Name = "quantity_input";
             quantity_input.Size = new Size(154, 39);
             quantity_input.TabIndex = 13;
@@ -169,10 +184,12 @@
             // price_lbl
             // 
             price_lbl.AutoSize = true;
-            price_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            price_lbl.Location = new Point(4, 308);
+            price_lbl.BackColor = Color.Transparent;
+            price_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            price_lbl.ForeColor = Color.White;
+            price_lbl.Location = new Point(13, 230);
             price_lbl.Name = "price_lbl";
-            price_lbl.Size = new Size(147, 32);
+            price_lbl.Size = new Size(158, 32);
             price_lbl.TabIndex = 4;
             price_lbl.Text = "Total price";
             // 
@@ -180,7 +197,7 @@
             // 
             price_input.Enabled = false;
             price_input.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            price_input.Location = new Point(161, 310);
+            price_input.Location = new Point(162, 231);
             price_input.Name = "price_input";
             price_input.PlaceholderText = "price";
             price_input.Size = new Size(260, 32);
@@ -191,6 +208,8 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1378, 820);
             Controls.Add(quantity_input);
             Controls.Add(bookdataview);

@@ -182,13 +182,13 @@ namespace FrontEnd
             {
                 MessageBox.Show("Set quantity of books");
             }
-            
+
         }
 
         private void quantity_input_ValueChanged(object sender, EventArgs e)
         {
             int quantity = int.Parse(quantity_input.Value.ToString());
-            price_input.Text = (double.Parse(bookgridview.Rows[bookdataview.CurrentCell.RowIndex]["Price"].ToString())*quantity).ToString();
+            price_input.Text = (double.Parse(bookgridview.Rows[bookdataview.CurrentCell.RowIndex]["Price"].ToString()) * quantity).ToString();
         }
     }
 }

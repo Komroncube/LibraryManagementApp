@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnBookForm));
             returneddataview = new DataGridView();
             issueddataview = new DataGridView();
             return_btn = new Button();
@@ -75,12 +76,16 @@
             // 
             // return_btn
             // 
-            return_btn.Location = new Point(152, 343);
+            return_btn.BackColor = Color.Transparent;
+            return_btn.FlatStyle = FlatStyle.Flat;
+            return_btn.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            return_btn.ForeColor = Color.Cyan;
+            return_btn.Location = new Point(147, 280);
             return_btn.Name = "return_btn";
-            return_btn.Size = new Size(165, 78);
+            return_btn.Size = new Size(199, 64);
             return_btn.TabIndex = 10;
             return_btn.Text = "Return book";
-            return_btn.UseVisualStyleBackColor = true;
+            return_btn.UseVisualStyleBackColor = false;
             return_btn.Click += return_btn_Click;
             // 
             // book_input
@@ -96,7 +101,7 @@
             // student_input
             // 
             student_input.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            student_input.Location = new Point(131, 147);
+            student_input.Location = new Point(131, 144);
             student_input.Name = "student_input";
             student_input.PlaceholderText = "firstname or lastname";
             student_input.Size = new Size(260, 35);
@@ -106,7 +111,9 @@
             // book_lbl
             // 
             book_lbl.AutoSize = true;
+            book_lbl.BackColor = Color.Transparent;
             book_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            book_lbl.ForeColor = Color.White;
             book_lbl.Location = new Point(12, 241);
             book_lbl.Name = "book_lbl";
             book_lbl.Size = new Size(79, 32);
@@ -116,27 +123,33 @@
             // return_lbl
             // 
             return_lbl.AutoSize = true;
-            return_lbl.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            return_lbl.BackColor = Color.Transparent;
+            return_lbl.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            return_lbl.ForeColor = Color.White;
             return_lbl.Location = new Point(901, 360);
             return_lbl.Name = "return_lbl";
-            return_lbl.Size = new Size(212, 38);
+            return_lbl.Size = new Size(270, 45);
             return_lbl.TabIndex = 5;
             return_lbl.Text = "Returned books";
             // 
             // issued_lbl
             // 
             issued_lbl.AutoSize = true;
-            issued_lbl.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            issued_lbl.BackColor = Color.Transparent;
+            issued_lbl.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            issued_lbl.ForeColor = Color.White;
             issued_lbl.Location = new Point(919, 11);
             issued_lbl.Name = "issued_lbl";
-            issued_lbl.Size = new Size(177, 38);
+            issued_lbl.Size = new Size(224, 45);
             issued_lbl.TabIndex = 6;
             issued_lbl.Text = "Issued books";
             // 
             // student_lbl
             // 
             student_lbl.AutoSize = true;
+            student_lbl.BackColor = Color.Transparent;
             student_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            student_lbl.ForeColor = Color.White;
             student_lbl.Location = new Point(12, 145);
             student_lbl.Name = "student_lbl";
             student_lbl.Size = new Size(113, 32);
@@ -146,6 +159,8 @@
             // ReturnBookForm
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1378, 744);
             Controls.Add(returneddataview);
             Controls.Add(issueddataview);

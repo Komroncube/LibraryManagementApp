@@ -22,14 +22,14 @@ namespace FrontEnd
             InitializeComponent();
             student_lbl.Select();
             bookOperation = new BookOperation();
-            
-            AddDataToTable(out issuedgridview,out returnedbookgridview);
+
+            AddDataToTable(out issuedgridview, out returnedbookgridview);
             issueddataview.DataSource = issuedgridview;
             issueddataview.Columns[0].Visible = false;
             issueddataview.Columns["Title"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             issueddataview.Columns["Description"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             issueddataview.Columns["Author"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            
+
             returneddataview.DataSource = returnedbookgridview;
             returneddataview.Columns[0].Visible = false;
             returneddataview.Columns["Title"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -62,7 +62,7 @@ namespace FrontEnd
             returned.Columns.Add("Author");
             foreach (var book in bookstudent)
             {
-                
+
                 if (book.Status == BackEndService.Enums.Status.Issued)
                 {
                     issue.Rows.Add(book.Id, book.FirstName, book.LastName, book.PhoneNumber, book.Title, book.Description, book.Author);
@@ -177,5 +177,7 @@ namespace FrontEnd
             }
         }
         #endregion editing_cell_size
+
+
     }
 }
