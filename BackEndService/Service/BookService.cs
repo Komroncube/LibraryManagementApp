@@ -41,5 +41,9 @@ namespace BackEndService.Service
                 _libdb.SaveChanges();
             }
         }
+        public int GetCount()
+        {
+            return _libdb.Books.Count();
+        }
     }
 }

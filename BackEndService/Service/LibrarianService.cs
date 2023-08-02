@@ -44,9 +44,15 @@ namespace BackEndService.Service
         {
             return _libdb.Librarian.Where(x=>x.UserName == username).Any();
         }
-        public bool CheckUser(string username, string password)
+        public bool CheckUser(string username, string password, out Guid id)
         {
-            return _libdb.Librarian.Where(x => x.UserName ==username && x.Password == password).Any();
+            var user = _libdb.Librarian.FirstOrDefault(x => x.UserName == username && x.Password == password);
+            id = user.Id;
+            return user != null;
+        }
+        public int GetCount()
+        {
+            return _libdb.Librarian.Count();
         }
     }
 }

@@ -63,5 +63,17 @@ namespace BackEndService.Service
                        Quantity = book.Quantity,
                    };
         }
+        public int GetIssuedCount()
+        {
+            return _libdb.BookStudents.Where(x => x.Status == 0).Count();
+        }
+        public int GetReturnedCount()
+        {
+            return _libdb.BookStudents.Where(x=>x.Status==Status.Returned).Count();
+        }
+        public int GetSoldBooks()
+        {
+            return _libdb.BoughtBooks.Select(x => x.Quantity).Sum();
+        }
     }
 }

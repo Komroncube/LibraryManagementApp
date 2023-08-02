@@ -36,5 +36,9 @@
 
             }
         }
+        public int GetCount()
+        {
+            return _libdb.Students.Count();
+        }
     }
 }
