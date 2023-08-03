@@ -1,4 +1,4 @@
-﻿using BackEndService.Enums;
+﻿using managementcheck.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +14,12 @@ namespace FrontEnd
 {
     public partial class LibrarianForm : Form
     {
-        LibrarianService libser = new LibrarianService();
         bool isediting;
         private DataTable librariangridview;
+        LibrarianService libservice = new LibrarianService();
         public LibrarianForm()
         {
             InitializeComponent();
-            List<Librarian> librarianlist = libser.GetAll();
 
             //gridview table
             librariangridview = new DataTable();
@@ -30,7 +29,7 @@ namespace FrontEnd
             librariangridview.Columns.Add("Phone number");
             librariangridview.Columns.Add("Username");
             librariangridview.Columns.Add("Password");
-            foreach (var item in librarianlist)
+            foreach (var item in libservice.GetAll())
             {
                 librariangridview.Rows.Add(item.Id.ToString(), item.FirstName, item.LastName, item.PhoneNumber, item.UserName, item.Password);
             }
@@ -75,7 +74,7 @@ namespace FrontEnd
                 phone_lbl.ForeColor = Color.Red;
                 isvalid = false;
             }
-            if (username_input.Text == "" || libser.isExist(username_input.Text))
+            if (username_input.Text == "" || libservice.isExist(username_input.Text))
             {
                 username_lbl.ForeColor = Color.Red;
                 isvalid = false;
@@ -116,7 +115,7 @@ namespace FrontEnd
                     Guid delitem = Guid.Parse(librariangridview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString());
 
                     librariangridview.Rows[dataview.CurrentCell.RowIndex].Delete();
-                    libser.Delete(delitem);
+                    libservice.Delete(delitem);
                 }
             }
             catch
@@ -137,7 +136,7 @@ namespace FrontEnd
                     librariangridview.Rows[dataview.CurrentCell.RowIndex]["Username"] = username_input.Text.Trim();
                     librariangridview.Rows[dataview.CurrentCell.RowIndex]["Password"] = password_input.Text.Trim();
 
-                    libser.Update(new Librarian()
+                    libservice.Update(new Librarian()
                     {
                         Id = Guid.Parse(librariangridview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString()),
                         FirstName = firstname_input.Text.Trim(),
@@ -158,7 +157,7 @@ namespace FrontEnd
                         UserName = username_input.Text.Trim(),
                         Password = password_input.Text.Trim(),
                     };
-                    libser.Create(lib);
+                    libservice.Create(lib);
                     librariangridview.Rows.Add(lib.Id, lib.FirstName, lib.LastName, lib.PhoneNumber, lib.UserName, lib.Password);
                 }
                 ClearFields();

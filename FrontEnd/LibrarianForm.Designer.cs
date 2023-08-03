@@ -51,6 +51,7 @@
             // 
             save_btn.BackColor = Color.Transparent;
             save_btn.FlatStyle = FlatStyle.Flat;
+            save_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             save_btn.ForeColor = Color.Lime;
             save_btn.Location = new Point(955, 232);
             save_btn.Name = "save_btn";
@@ -64,6 +65,7 @@
             // 
             delete_btn.BackColor = Color.Transparent;
             delete_btn.FlatStyle = FlatStyle.Flat;
+            delete_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             delete_btn.ForeColor = Color.Red;
             delete_btn.Location = new Point(792, 232);
             delete_btn.Name = "delete_btn";
@@ -77,12 +79,13 @@
             // 
             new_btn.BackColor = Color.Transparent;
             new_btn.FlatStyle = FlatStyle.Flat;
+            new_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             new_btn.ForeColor = Color.White;
             new_btn.Location = new Point(792, 134);
             new_btn.Name = "new_btn";
             new_btn.Size = new Size(145, 70);
             new_btn.TabIndex = 16;
-            new_btn.Text = "New";
+            new_btn.Text = "Clear";
             new_btn.UseVisualStyleBackColor = false;
             new_btn.Click += new_btn_Click;
             // 
@@ -90,6 +93,7 @@
             // 
             edit_btn.BackColor = Color.Transparent;
             edit_btn.FlatStyle = FlatStyle.Flat;
+            edit_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             edit_btn.ForeColor = Color.Cyan;
             edit_btn.Location = new Point(955, 134);
             edit_btn.Name = "edit_btn";

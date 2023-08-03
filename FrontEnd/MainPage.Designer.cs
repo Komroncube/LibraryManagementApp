@@ -75,8 +75,6 @@
             student.TabIndex = 0;
             student.Text = "Students";
             student.Click += student_Click;
-            student.MouseLeave += student_MouseLeave;
-            student.MouseHover += student_MouseHover;
             // 
             // books
             // 

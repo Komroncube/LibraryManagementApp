@@ -12,18 +12,20 @@ namespace FrontEnd
 {
     public partial class MainPage : Form
     {
+        BookOperation operation;
+        StudentService stdservice;
+        BookService bookser;
+        LibrarianService lib;
         Guid id = Guid.Empty;
         public MainPage(Guid id)
         {
             InitializeComponent();
+            stdservice = new StudentService();
             this.id = id;
-
-            std_count.Text = new StudentService().GetCount().ToString();
-            book_count.Text = new BookService().GetCount().ToString();  
-            librarian_count.Text = new LibrarianService().GetCount().ToString();
-            issued_count.Text = new BookOperation().GetIssuedCount().ToString();
-            returned_count.Text = new BookOperation().GetReturnedCount().ToString();
-            sold_count.Text = new BookOperation().GetSoldBooks().ToString();
+            operation = new BookOperation();
+            bookser = new BookService();
+            lib = new LibrarianService();
+            LoadData();
         }
 
         private void student_Click(object sender, EventArgs e)
@@ -32,6 +34,8 @@ namespace FrontEnd
             StudentForm studentForm = new StudentForm();
             studentForm.ShowDialog();
             studentForm = null;
+            LoadData();
+
             this.Show();
         }
 
@@ -41,6 +45,8 @@ namespace FrontEnd
             BookForm bookForm = new BookForm();
             bookForm.ShowDialog();
             bookForm = null;
+            LoadData();
+
             this.Show();
         }
 
@@ -50,6 +56,8 @@ namespace FrontEnd
             IssueBookForm issueBookForm = new IssueBookForm();
             issueBookForm.ShowDialog();
             issueBookForm = null;
+            LoadData();
+
             this.Show();
         }
 
@@ -59,6 +67,8 @@ namespace FrontEnd
             ReturnBookForm returnBookForm = new ReturnBookForm();
             returnBookForm.ShowDialog();
             returnBookForm = null;
+            LoadData();
+
             this.Show();
         }
 
@@ -68,6 +78,8 @@ namespace FrontEnd
             PurchaseForm purchaseForm = new PurchaseForm();
             purchaseForm.ShowDialog();
             purchaseForm = null;
+            LoadData();
+
             this.Show();
         }
 
@@ -77,6 +89,8 @@ namespace FrontEnd
             LibrarianForm librarianForm = new LibrarianForm();
             librarianForm.ShowDialog();
             librarianForm = null;
+            LoadData();
+
             this.Show();
         }
 
@@ -96,15 +110,16 @@ namespace FrontEnd
                 Application.Exit();
             }
         }
-
-        private void student_MouseHover(object sender, EventArgs e)
+        private void LoadData()
         {
-            student.ForeColor = Color.LightGreen;
+            std_count.Text = stdservice.GetCount().ToString();
+            book_count.Text = bookser.GetCount().ToString();
+            librarian_count.Text = lib.GetCount().ToString();
+            issued_count.Text = operation.GetIssuedCount().ToString();
+            returned_count.Text = operation.GetReturnedCount().ToString();
+            sold_count.Text = operation.GetSoldBooks().ToString();
         }
 
-        private void student_MouseLeave(object sender, EventArgs e)
-        {
-            student.ForeColor = Color.White;
-        }
+        
     }
 }

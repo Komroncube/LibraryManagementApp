@@ -43,6 +43,7 @@
             title_lbl = new Label();
             dataview = new DataGridView();
             quantity_updown = new NumericUpDown();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataview).BeginInit();
             ((System.ComponentModel.ISupportInitialize)quantity_updown).BeginInit();
             SuspendLayout();
@@ -51,6 +52,7 @@
             // 
             save_btn.BackColor = Color.Transparent;
             save_btn.FlatStyle = FlatStyle.Flat;
+            save_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             save_btn.ForeColor = Color.Lime;
             save_btn.Location = new Point(955, 187);
             save_btn.Name = "save_btn";
@@ -64,6 +66,7 @@
             // 
             delete_btn.BackColor = Color.Transparent;
             delete_btn.FlatStyle = FlatStyle.Flat;
+            delete_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             delete_btn.ForeColor = Color.Red;
             delete_btn.Location = new Point(792, 187);
             delete_btn.Name = "delete_btn";
@@ -77,12 +80,13 @@
             // 
             new_btn.BackColor = Color.Transparent;
             new_btn.FlatStyle = FlatStyle.Flat;
+            new_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             new_btn.ForeColor = Color.White;
             new_btn.Location = new Point(792, 89);
             new_btn.Name = "new_btn";
             new_btn.Size = new Size(145, 70);
             new_btn.TabIndex = 31;
-            new_btn.Text = "New";
+            new_btn.Text = "Clear";
             new_btn.UseVisualStyleBackColor = false;
             new_btn.Click += new_btn_Click;
             // 
@@ -90,6 +94,7 @@
             // 
             edit_btn.BackColor = Color.Transparent;
             edit_btn.FlatStyle = FlatStyle.Flat;
+            edit_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             edit_btn.ForeColor = Color.Cyan;
             edit_btn.Location = new Point(955, 89);
             edit_btn.Name = "edit_btn";
@@ -101,7 +106,7 @@
             // 
             // author_input
             // 
-            author_input.Location = new Point(206, 136);
+            author_input.Location = new Point(206, 166);
             author_input.Name = "author_input";
             author_input.Size = new Size(248, 39);
             author_input.TabIndex = 24;
@@ -110,7 +115,7 @@
             // 
             author_lbl.AutoSize = true;
             author_lbl.ForeColor = Color.Cyan;
-            author_lbl.Location = new Point(33, 136);
+            author_lbl.Location = new Point(33, 166);
             author_lbl.Name = "author_lbl";
             author_lbl.Size = new Size(87, 32);
             author_lbl.TabIndex = 19;
@@ -118,7 +123,7 @@
             // 
             // description_input
             // 
-            description_input.Location = new Point(206, 91);
+            description_input.Location = new Point(206, 121);
             description_input.Name = "description_input";
             description_input.Size = new Size(248, 39);
             description_input.TabIndex = 25;
@@ -127,7 +132,7 @@
             // 
             description_lbl.AutoSize = true;
             description_lbl.ForeColor = Color.Cyan;
-            description_lbl.Location = new Point(33, 91);
+            description_lbl.Location = new Point(33, 121);
             description_lbl.Name = "description_lbl";
             description_lbl.Size = new Size(135, 32);
             description_lbl.TabIndex = 20;
@@ -135,7 +140,7 @@
             // 
             // price_input
             // 
-            price_input.Location = new Point(206, 181);
+            price_input.Location = new Point(206, 211);
             price_input.Name = "price_input";
             price_input.Size = new Size(248, 39);
             price_input.TabIndex = 26;
@@ -144,7 +149,7 @@
             // 
             quantity_lbl.AutoSize = true;
             quantity_lbl.ForeColor = Color.Cyan;
-            quantity_lbl.Location = new Point(33, 226);
+            quantity_lbl.Location = new Point(33, 256);
             quantity_lbl.Name = "quantity_lbl";
             quantity_lbl.Size = new Size(106, 32);
             quantity_lbl.TabIndex = 21;
@@ -154,7 +159,7 @@
             // 
             price_lbl.AutoSize = true;
             price_lbl.ForeColor = Color.Cyan;
-            price_lbl.Location = new Point(33, 181);
+            price_lbl.Location = new Point(33, 211);
             price_lbl.Name = "price_lbl";
             price_lbl.Size = new Size(65, 32);
             price_lbl.TabIndex = 22;
@@ -162,7 +167,7 @@
             // 
             // title_input
             // 
-            title_input.Location = new Point(206, 46);
+            title_input.Location = new Point(206, 76);
             title_input.Name = "title_input";
             title_input.Size = new Size(248, 39);
             title_input.TabIndex = 28;
@@ -171,7 +176,7 @@
             // 
             title_lbl.AutoSize = true;
             title_lbl.ForeColor = Color.Cyan;
-            title_lbl.Location = new Point(33, 46);
+            title_lbl.Location = new Point(33, 76);
             title_lbl.Name = "title_lbl";
             title_lbl.Size = new Size(60, 32);
             title_lbl.TabIndex = 23;
@@ -195,10 +200,22 @@
             // 
             // quantity_updown
             // 
-            quantity_updown.Location = new Point(206, 226);
+            quantity_updown.Location = new Point(206, 256);
+            quantity_updown.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             quantity_updown.Name = "quantity_updown";
             quantity_updown.Size = new Size(180, 39);
             quantity_updown.TabIndex = 33;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Yellow;
+            label1.Location = new Point(590, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(113, 45);
+            label1.TabIndex = 34;
+            label1.Text = "Books";
             // 
             // BookForm
             // 
@@ -206,6 +223,7 @@
             BackColor = Color.FromArgb(0, 0, 64);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1378, 820);
+            Controls.Add(label1);
             Controls.Add(quantity_updown);
             Controls.Add(save_btn);
             Controls.Add(delete_btn);
@@ -225,7 +243,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "BookForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "BookForm";
+            Text = "Book management";
             ((System.ComponentModel.ISupportInitialize)dataview).EndInit();
             ((System.ComponentModel.ISupportInitialize)quantity_updown).EndInit();
             ResumeLayout(false);
@@ -249,5 +267,6 @@
         private Label title_lbl;
         private DataGridView dataview;
         private NumericUpDown quantity_updown;
+        private Label label1;
     }
 }

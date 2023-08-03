@@ -1,17 +1,14 @@
-﻿using BackEndService.Enums;
-using System.Data;
-
-namespace FrontEnd
+﻿namespace FrontEnd
 {
     public partial class StudentForm : Form
     {
+        StudentService stdservice = new StudentService();
         private DataTable studentlistview;
         bool isediting;
         public StudentForm()
         {
             InitializeComponent();
-            List<Student> studentlist = new StudentService().GetAll();
-
+            label1.Select();
             //gridview table
             studentlistview = new DataTable();
             studentlistview.Columns.Add("Id");
@@ -19,9 +16,9 @@ namespace FrontEnd
             studentlistview.Columns.Add("Last name");
             studentlistview.Columns.Add("Phone number");
             studentlistview.Columns.Add("Faculty");
-            foreach (var item in studentlist)
+            foreach (var item in stdservice.GetAll())
             {
-                studentlistview.Rows.Add(item.Id.ToString(), item.FirstName, item.LastName, item.PhoneNumber, EnumService.EnumToString(item.Faculty));
+                studentlistview.Rows.Add(item.Id.ToString(), item.FirstName, item.LastName, item.PhoneNumber, item.Faculty.EnumToString());
             }
             dataview.DataSource = studentlistview;
             dataview.Columns[0].Visible = false;
@@ -30,9 +27,10 @@ namespace FrontEnd
             //combobox
             foreach (Faculty item in Enum.GetValues(typeof(Faculty)))
             {
-                faculty.Items.Add(EnumService.EnumToString(item));
+                faculty.Items.Add(item.EnumToString());
             }
             faculty.SelectedIndex = -1;
+            faculty.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void new_btn_Click(object sender, EventArgs e)
@@ -75,7 +73,7 @@ namespace FrontEnd
                     Guid delitem = Guid.Parse(studentlistview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString());
 
                     studentlistview.Rows[dataview.CurrentCell.RowIndex].Delete();
-                    new StudentService().Delete(delitem);
+                    stdservice.Delete(delitem);
 
                 }
 
@@ -98,7 +96,7 @@ namespace FrontEnd
                     studentlistview.Rows[dataview.CurrentCell.RowIndex]["Last name"] = lastname_input.Text.Trim();
                     studentlistview.Rows[dataview.CurrentCell.RowIndex]["Phone number"] = phone_input.Text.Trim();
                     studentlistview.Rows[dataview.CurrentCell.RowIndex]["Faculty"] = faculty.SelectedItem.ToString();
-                    new StudentService().Update(ParseRowToStudent());
+                    stdservice.Update(ParseRowToStudent());
                     isediting = false;
                 }
                 else
@@ -108,9 +106,9 @@ namespace FrontEnd
                         FirstName = firstname_input.Text.Trim(),
                         LastName = lastname_input.Text.Trim(),
                         PhoneNumber = phone_input.Text.Trim(),
-                        Faculty = EnumService.StringToEnum(faculty.SelectedItem.ToString())
+                        Faculty = faculty.SelectedItem.ToString().StringToEnum(),
                     };
-                    new StudentService().Create(std);
+                    stdservice.Create(std);
                     studentlistview.Rows.Add(std.Id, std.FirstName, std.LastName, std.PhoneNumber, faculty.Text);
                 }
                 ClearFields();
@@ -152,7 +150,7 @@ namespace FrontEnd
                 FirstName = items[1].ToString(),
                 LastName = items[2].ToString(),
                 PhoneNumber = items[3].ToString(),
-                Faculty = EnumService.StringToEnum(items[4].ToString())
+                Faculty = items[4].ToString().StringToEnum()
             };
             return std;
         }

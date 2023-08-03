@@ -49,12 +49,12 @@
             returneddataview.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             returneddataview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             returneddataview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            returneddataview.Location = new Point(574, 425);
+            returneddataview.Location = new Point(442, 425);
             returneddataview.Name = "returneddataview";
             returneddataview.ReadOnly = true;
             returneddataview.RowHeadersWidth = 62;
             returneddataview.RowTemplate.Height = 33;
-            returneddataview.Size = new Size(792, 309);
+            returneddataview.Size = new Size(924, 309);
             returneddataview.TabIndex = 11;
             // 
             // issueddataview
@@ -65,12 +65,12 @@
             issueddataview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             issueddataview.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             issueddataview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            issueddataview.Location = new Point(574, 66);
+            issueddataview.Location = new Point(442, 66);
             issueddataview.Name = "issueddataview";
             issueddataview.ReadOnly = true;
             issueddataview.RowHeadersWidth = 62;
             issueddataview.RowTemplate.Height = 33;
-            issueddataview.Size = new Size(792, 257);
+            issueddataview.Size = new Size(924, 257);
             issueddataview.TabIndex = 12;
             issueddataview.CellFormatting += issuedataGridView_CellFormatting;
             // 
@@ -112,11 +112,11 @@
             // 
             book_lbl.AutoSize = true;
             book_lbl.BackColor = Color.Transparent;
-            book_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            book_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point);
             book_lbl.ForeColor = Color.White;
             book_lbl.Location = new Point(12, 241);
             book_lbl.Name = "book_lbl";
-            book_lbl.Size = new Size(79, 32);
+            book_lbl.Size = new Size(83, 32);
             book_lbl.TabIndex = 4;
             book_lbl.Text = "Book";
             // 
@@ -126,7 +126,7 @@
             return_lbl.BackColor = Color.Transparent;
             return_lbl.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             return_lbl.ForeColor = Color.White;
-            return_lbl.Location = new Point(901, 360);
+            return_lbl.Location = new Point(739, 352);
             return_lbl.Name = "return_lbl";
             return_lbl.Size = new Size(270, 45);
             return_lbl.TabIndex = 5;
@@ -138,7 +138,7 @@
             issued_lbl.BackColor = Color.Transparent;
             issued_lbl.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             issued_lbl.ForeColor = Color.White;
-            issued_lbl.Location = new Point(919, 11);
+            issued_lbl.Location = new Point(757, 3);
             issued_lbl.Name = "issued_lbl";
             issued_lbl.Size = new Size(224, 45);
             issued_lbl.TabIndex = 6;
@@ -148,11 +148,11 @@
             // 
             student_lbl.AutoSize = true;
             student_lbl.BackColor = Color.Transparent;
-            student_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            student_lbl.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point);
             student_lbl.ForeColor = Color.White;
             student_lbl.Location = new Point(12, 145);
             student_lbl.Name = "student_lbl";
-            student_lbl.Size = new Size(113, 32);
+            student_lbl.Size = new Size(120, 32);
             student_lbl.TabIndex = 7;
             student_lbl.Text = "Student";
             // 

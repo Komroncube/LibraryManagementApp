@@ -1,120 +1,102 @@
-﻿using BackEndService.Service;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace FrontEnd
+﻿namespace FrontEnd
 {
     public partial class ReturnBookForm : Form
     {
         DataTable issuedgridview;
-        DataTable returnedbookgridview;
+        DataTable returnedgridview;
         BookOperation bookOperation;
-
+        IEnumerable<BookStudentView> bookStudents;
         public ReturnBookForm()
         {
             InitializeComponent();
             student_lbl.Select();
             bookOperation = new BookOperation();
+            bookStudents = bookOperation.GetStudentBooks();
 
-            AddDataToTable(out issuedgridview, out returnedbookgridview);
+
+            issuedgridview = new DataTable();
+            issuedgridview.Columns.Add("Id");
+            issuedgridview.Columns.Add("Student firstname");
+            issuedgridview.Columns.Add("Student lastname");
+            issuedgridview.Columns.Add("Phone number");
+            issuedgridview.Columns.Add("Title");
+            issuedgridview.Columns.Add("Description");
+            issuedgridview.Columns.Add("Author");
             issueddataview.DataSource = issuedgridview;
+
             issueddataview.Columns[0].Visible = false;
             issueddataview.Columns["Title"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             issueddataview.Columns["Description"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             issueddataview.Columns["Author"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            returneddataview.DataSource = returnedbookgridview;
+
+
+            returnedgridview = new DataTable();
+            returnedgridview.Columns.Add("Id");
+            returnedgridview.Columns.Add("Student firstname");
+            returnedgridview.Columns.Add("Student lastname");
+            returnedgridview.Columns.Add("Phone number");
+            returnedgridview.Columns.Add("Title");
+            returnedgridview.Columns.Add("Description");
+            returnedgridview.Columns.Add("Author");
+            returnedgridview.Columns.Add("Returned date");
+
+
+
+            returneddataview.DataSource = returnedgridview;
             returneddataview.Columns[0].Visible = false;
             returneddataview.Columns["Title"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             returneddataview.Columns["Description"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             returneddataview.Columns["Author"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
+            AddIssuedData();
+            AddReturnedData();
 
 
         }
-        private void AddDataToTable(out DataTable issue, out DataTable returned)
-        {
-            var bookstudent = BookOperation.GetStudentBooks();
-            issue = new DataTable();
-            issue.Columns.Add("Id");
-            issue.Columns.Add("Student firstname");
-            issue.Columns.Add("Student lastname");
-            issue.Columns.Add("Phone number");
-            issue.Columns.Add("Title");
-            issue.Columns.Add("Description");
-            issue.Columns.Add("Author");
-
-
-            returned = new DataTable();
-            returned.Columns.Add("Id");
-            returned.Columns.Add("Student firstname");
-            returned.Columns.Add("Student lastname");
-            returned.Columns.Add("Phone number");
-            returned.Columns.Add("Title");
-            returned.Columns.Add("Description");
-            returned.Columns.Add("Author");
-            foreach (var book in bookstudent)
-            {
-
-                if (book.Status == BackEndService.Enums.Status.Issued)
-                {
-                    issue.Rows.Add(book.Id, book.FirstName, book.LastName, book.PhoneNumber, book.Title, book.Description, book.Author);
-                }
-                else
-                {
-                    returned.Rows.Add(book.Id, book.FirstName, book.LastName, book.PhoneNumber, book.Title, book.Description, book.Author);
-
-                }
-            }
-
-        }
+        
         private void return_btn_Click(object sender, EventArgs e)
         {
             Guid id = Guid.Parse(issuedgridview.Rows[issueddataview.CurrentCell.RowIndex]["Id"].ToString());
+            var item = bookStudents.First(x => x.Id == id);
+            item.Status = Status.Returned;
+            item.ReturnedDate = DateTime.UtcNow;
             bookOperation.ReturnBook(id);
             student_input.Text = "";
             book_input.Text = "";
             MessageBox.Show("Book returned successfully");
-            AddDataToTable(out issuedgridview, out returnedbookgridview);
-            issueddataview.DataSource = issuedgridview;
-            returneddataview.DataSource = returnedbookgridview;
+            AddReturnedData();
+            AddIssuedData();
+
         }
 
         private void student_input_TextChanged(object sender, EventArgs e)
         {
-            string searchText = student_input.Text.ToLower();
-
-            // Create a DataView of the DataTable
-            DataView dataView = new DataView(issuedgridview);
-
-            // Filter the rows of the DataView based on search text
-            dataView.RowFilter = string.Format("[{0}] LIKE '%{1}%' OR [{2}] LIKE '%{1}%' OR [{3}] LIKE '%{1}%'", "Student firstname", searchText, "Student lastname", "Phone number");
-            // Set the DataView as the data source of the DataGridView
-            issueddataview.DataSource = dataView;
+            AddIssuedData();
         }
 
         private void book_input_TextChanged(object sender, EventArgs e)
         {
-            string searchText = book_input.Text.ToLower();
-            // Create a DataView of the DataTable
-
-
-            DataView dataView = new DataView(issuedgridview);
-
-            // Filter the rows of the DataView based on search text
-            dataView.RowFilter = string.Format("[{0}] LIKE '%{1}%' OR [{2}] LIKE '%{1}%' OR [{3}] LIKE '%{1}%'", "Title", searchText, "Description", "Author");
-            // Set the DataView as the data source of the DataGridView
-            issueddataview.DataSource = dataView;
+            AddIssuedData();
         }
 
+        private void AddIssuedData()
+        {
+            issuedgridview.Rows.Clear();
+            foreach (BookStudentView book in bookStudents)
+            {
+                if (book.Status==Status.Issued && Array.Exists(new string[] { book.Author.ToLower(), book.Description.ToLower() }, s => s.Contains(book_input.Text.Trim().ToLower())) && Array.Exists(new string[] { book.FirstName.ToLower(), book.LastName.ToLower(), book.PhoneNumber.ToLower() }, s => s.Contains(student_input.Text.Trim().ToLower())))
+                    issuedgridview.Rows.Add(book.Id, book.FirstName, book.LastName, book.PhoneNumber, book.Title, book.Description, book.Author);
+            }
+        }
+        private void AddReturnedData()
+        {
+            returnedgridview.Rows.Clear();
+            foreach(BookStudentView book in bookStudents)
+            {
+                returnedgridview.Rows.Add(book.Id, book.FirstName, book.LastName, book.PhoneNumber, book.Title, book.Description, book.Author, book.ReturnedDate);
 
+            }
+        }
         #region issue_editing_cell_size
         private void issuedataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

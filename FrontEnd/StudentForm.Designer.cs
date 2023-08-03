@@ -41,6 +41,7 @@
             new_btn = new Button();
             delete_btn = new Button();
             save_btn = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataview).BeginInit();
             SuspendLayout();
             // 
@@ -133,6 +134,7 @@
             // 
             edit_btn.BackColor = Color.Transparent;
             edit_btn.FlatStyle = FlatStyle.Flat;
+            edit_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             edit_btn.ForeColor = Color.Cyan;
             edit_btn.Location = new Point(965, 114);
             edit_btn.Name = "edit_btn";
@@ -146,12 +148,13 @@
             // 
             new_btn.BackColor = Color.Transparent;
             new_btn.FlatStyle = FlatStyle.Flat;
+            new_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             new_btn.ForeColor = Color.White;
             new_btn.Location = new Point(802, 114);
             new_btn.Name = "new_btn";
             new_btn.Size = new Size(145, 70);
             new_btn.TabIndex = 4;
-            new_btn.Text = "New";
+            new_btn.Text = "Clear";
             new_btn.UseVisualStyleBackColor = false;
             new_btn.Click += new_btn_Click;
             // 
@@ -159,6 +162,7 @@
             // 
             delete_btn.BackColor = Color.Transparent;
             delete_btn.FlatStyle = FlatStyle.Flat;
+            delete_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             delete_btn.ForeColor = Color.Red;
             delete_btn.Location = new Point(802, 212);
             delete_btn.Name = "delete_btn";
@@ -172,6 +176,7 @@
             // 
             save_btn.BackColor = Color.Transparent;
             save_btn.FlatStyle = FlatStyle.Flat;
+            save_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             save_btn.ForeColor = Color.Lime;
             save_btn.Location = new Point(965, 212);
             save_btn.Name = "save_btn";
@@ -181,11 +186,23 @@
             save_btn.UseVisualStyleBackColor = false;
             save_btn.Click += save_btn_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Yellow;
+            label1.Location = new Point(538, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(158, 45);
+            label1.TabIndex = 5;
+            label1.Text = "Students";
+            // 
             // StudentForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(0, 0, 64);
             ClientSize = new Size(1378, 820);
+            Controls.Add(label1);
             Controls.Add(save_btn);
             Controls.Add(delete_btn);
             Controls.Add(new_btn);
@@ -224,5 +241,6 @@
         private Button new_btn;
         private Button delete_btn;
         private Button save_btn;
+        private Label label1;
     }
 }

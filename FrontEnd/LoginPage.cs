@@ -1,9 +1,8 @@
-using BackEndService.Data;
-
 namespace FrontEnd
 {
     public partial class LoginPage : Form
     {
+        LibrarianService libservice = new LibrarianService();
         Guid id;
         public LoginPage()
         {
@@ -42,7 +41,7 @@ namespace FrontEnd
             else
             {
 
-                if (new LibrarianService().CheckUser(username_input.Text, pass_input.Text, out id))
+                if (libservice.CheckUser(username_input.Text, pass_input.Text, out id))
                 {
                     MainPage mainPage = new MainPage(id);
                     mainPage.FormClosing += MainPage_FormClosing;

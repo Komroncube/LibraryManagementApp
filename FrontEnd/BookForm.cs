@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿
 namespace FrontEnd
 {
     public partial class BookForm : Form
     {
-        BookService BookService = new BookService();
+        BookService bookService;
         bool isediting;
         private DataTable bookgridview;
         public BookForm()
         {
             InitializeComponent();
-            List<Book> booklist = BookService.GetAll();
-
+            bookService = new BookService();
             //gridview table
             bookgridview = new DataTable();
             bookgridview.Columns.Add("Id");
@@ -30,7 +18,7 @@ namespace FrontEnd
             bookgridview.Columns.Add("Author");
             bookgridview.Columns.Add("Price");
             bookgridview.Columns.Add("Quantity");
-            foreach (var item in booklist)
+            foreach (var item in bookService.GetAll())
             {
                 bookgridview.Rows.Add(item.Id.ToString(), item.Title, item.Description, item.Author, item.Price, item.Quantity);
             }
@@ -55,7 +43,6 @@ namespace FrontEnd
             }
             if (!double.TryParse(price_input.Text.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out value))
             {
-                MessageBox.Show("Kitobning narxini to'g'ri kiriting");
                 price_lbl.ForeColor = Color.Red;
                 isvalid = false;
             }
@@ -106,7 +93,7 @@ namespace FrontEnd
                     Guid delitem = Guid.Parse(bookgridview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString());
 
                     bookgridview.Rows[dataview.CurrentCell.RowIndex].Delete();
-                    BookService.Delete(delitem);
+                    bookService.Delete(delitem);
 
                 }
             }
@@ -137,15 +124,20 @@ namespace FrontEnd
                     bookgridview.Rows[dataview.CurrentCell.RowIndex]["Price"] = value;
                     bookgridview.Rows[dataview.CurrentCell.RowIndex]["Quantity"] = quantity_updown.Value;
                     book.Id = Guid.Parse(bookgridview.Rows[dataview.CurrentCell.RowIndex]["Id"].ToString());
-                    BookService.Update(book);
+                    bookService.Update(book);
                     isediting = false;
                 }
                 else
                 {
-                    BookService.Create(book);
+                    bookService.Create(book);
                     bookgridview.Rows.Add(book.Id, book.Title, book.Description, book.Author, book.Price, book.Quantity);
                 }
                 ClearFields();
+            }
+            else
+            {
+                MessageBox.Show("Ma'lumotlarni to'g'ri va to'liq kiriting");
+
             }
         }
 
