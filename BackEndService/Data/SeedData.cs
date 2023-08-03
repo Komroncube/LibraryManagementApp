@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEndService.Data
+namespace managementcheck.Data
 {
-    public class SeedData
+    internal class SeedData
     {
         public Guid[] students = new Guid[]
         {
@@ -16,8 +16,7 @@ namespace BackEndService.Data
         };
         public Guid[] books = new Guid[]
         {
-            Guid.Parse("a09b59e7-240c-4a28-919f-8a19dfc2a86e"),
-            Guid.Parse("9745f08c-4cbc-4888-a881-c890842e0ead"),
+            Guid.Parse("9745f08c-4cbc-4888-a881-c890842e0ekd"),
             Guid.Parse("e25020c2-9175-4ec4-8cb8-dfa0e11686f8")
         };
         public Guid[] librarian = new Guid[]

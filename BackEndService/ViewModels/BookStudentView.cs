@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BackEndService.ViewModels
+﻿namespace managementcheck.ViewModels
 {
     public class BookStudentView
     {
@@ -16,6 +10,6 @@ namespace BackEndService.ViewModels
         public string? Description { get; set; }
         public string Author { get; set; }
         public Status Status { get; set; }
-        public int Quantity { get; set; }
+        public DateTime? ReturnedDate { get; set;}
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BackEndService.Models
+﻿namespace managementcheck.Models
 {
     public class Book
     {

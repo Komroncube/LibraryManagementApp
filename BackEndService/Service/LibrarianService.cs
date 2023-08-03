@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BackEndService.Service
+﻿namespace managementcheck.Service
 {
-    public class LibrarianService
+    public class LibrarianService : IDatabaseService<Librarian> 
     {
         private LibraryManagementDb _libdb = new LibraryManagementDb();
         public void Create(Librarian librarian)
@@ -14,7 +8,7 @@ namespace BackEndService.Service
             _libdb.Librarian.Add(librarian);
             _libdb.SaveChanges();
         }
-        public List<Librarian> GetAll()
+        public IEnumerable<Librarian> GetAll()
         {
             return _libdb.Librarian.ToList();
         }
@@ -46,9 +40,16 @@ namespace BackEndService.Service
         }
         public bool CheckUser(string username, string password, out Guid id)
         {
+            id = Guid.Empty;
             var user = _libdb.Librarian.FirstOrDefault(x => x.UserName == username && x.Password == password);
-            id = user.Id;
-            return user != null;
+            if(user!= null) 
+            {
+                id = user.Id;
+                return user != null;
+            }
+            return false;
+
+            
         }
         public int GetCount()
         {

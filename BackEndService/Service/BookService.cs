@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BackEndService.Service
+﻿namespace managementcheck.Service
 {
-    public class BookService
+    public class BookService : IDatabaseService<Book>
     {
         private LibraryManagementDb _libdb = new LibraryManagementDb();
         public void Create(Book book)
@@ -24,7 +18,7 @@ namespace BackEndService.Service
 
             }
         }
-        public List<Book> GetAll() 
+        public IEnumerable<Book> GetAll() 
         {
             return _libdb.Books.ToList();
         }

@@ -1,8 +1,9 @@
-﻿global using BackEndService.Interfaces;
-global using BackEndService.Models;
-global using BackEndService.Data;
-global using BackEndService.ViewModels;
-global using BackEndService.Enums;
+﻿global using managementcheck.Data;
+global using managementcheck.Enums;
+global using managementcheck.Interfaces;
+global using managementcheck.Models;
+global using managementcheck.ViewModels;
+global using Dapper;
 global using Microsoft.EntityFrameworkCore;
+global using Npgsql;
 global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel.DataAnnotations.Schema;

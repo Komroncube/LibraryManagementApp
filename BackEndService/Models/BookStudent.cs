@@ -1,14 +1,11 @@
-﻿
-namespace BackEndService.Models
+﻿namespace managementcheck.Models
 {
     public class BookStudent
     {
         [Key]
         public Guid Id { get; set; }
-        //[ForeignKey("Student")]
         public Guid StudentId { get; set; }
         public Student Student { get; set; }
-        //[ForeignKey("Book")]
         public Guid BookId { get; set; }
         public Book Book { get; set; }
         public DateTime IssueDate { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace BackEndService.Enums
+﻿namespace managementcheck.Enums
 {
     public enum Status
     {

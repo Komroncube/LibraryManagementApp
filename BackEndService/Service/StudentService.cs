@@ -1,6 +1,6 @@
-﻿namespace BackEndService.Service
+﻿namespace managementcheck.Service
 {
-    public class StudentService
+    public class StudentService : IDatabaseService<Student>
     {
         private LibraryManagementDb _libdb = new LibraryManagementDb();
         public void Create(Student student)
@@ -19,7 +19,7 @@
             }
 
         }
-        public List<Student> GetAll()
+        public IEnumerable<Student> GetAll()
         {
             return _libdb.Students.AsNoTracking().ToList();
         }

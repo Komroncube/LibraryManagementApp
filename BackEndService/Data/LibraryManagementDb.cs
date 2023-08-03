@@ -1,13 +1,26 @@
 ﻿
-namespace BackEndService.Data
+namespace managementcheck.Data
 {
     public class LibraryManagementDb : DbContext
     {
+        public LibraryManagementDb(DbContextOptions<LibraryManagementDb> options) : base(options) { }
+
+        public LibraryManagementDb()
+        {
+                
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=LibraryManagementDb");
+            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=LibraryManagementAppDb");
             base.OnConfiguring(optionsBuilder);
+         //   optionsBuilder.EnableSensitiveDataLogging();
         }
+
+
+        SeedData sd = new SeedData();
+        
+        Action<ModelBuilder> AddSeedData;
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BookStudent>()
@@ -29,8 +42,14 @@ namespace BackEndService.Data
                 .HasForeignKey(st => st.BookId);
             
 
-            var sd = new SeedData();
             base.OnModelCreating(modelBuilder);
+            AddSeedData += AddStudent;
+            AddSeedData += AddLibrarian;
+            AddSeedData += AddBook;
+            AddSeedData.Invoke(modelBuilder);
+        }
+        private void AddStudent(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Student>().HasData(
                 new Student
                 {
@@ -46,7 +65,7 @@ namespace BackEndService.Data
                     FirstName = "Dominik",
                     LastName = "Toretto",
                     PhoneNumber = "888892834769",
-                    Faculty=Faculty.Soliq_va_sugurta,
+                    Faculty = Faculty.Soliq_va_sugurta,
                 },
                 new Student
                 {
@@ -56,6 +75,9 @@ namespace BackEndService.Data
                     PhoneNumber = "998992349012",
                     Faculty = Faculty.Byudjet_hisobi_va_gaznachilik,
                 });
+        }
+        private void AddLibrarian(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Librarian>().HasData(
                 new Librarian()
                 {
@@ -71,10 +93,13 @@ namespace BackEndService.Data
                     Id = sd.librarian[1],
                     FirstName = "Izabella",
                     LastName = "Dickson",
-                    PhoneNumber ="998913845940",
+                    PhoneNumber = "998913845940",
                     UserName = "Iza",
                     Password = "Izason11",
                 });
+        }
+        private void AddBook(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Book>().HasData(
                 new Book()
                 {
@@ -93,19 +118,7 @@ namespace BackEndService.Data
                     Description = "Lorem ipsum",
                     Quantity = 20,
                     Price = 30,
-                },
-                new Book()
-                {
-                    Id = sd.books[2],
-                    Title = "War and Peace",
-                    Author = "Lev Tolstoy",
-                    Description = "Lorem ipsum",
-                    Quantity = 12,
-                    Price = 40,
-                }
-
-                );
-            
+                });
         }
 
         public DbSet<Book> Books { get; set; }
